@@ -1,0 +1,35 @@
+from flask import Flask,render_template
+
+
+v1=5
+v2=6
+soma2=v1+v2
+subtração2=v1-v2
+multiplicação2=v1*v2
+app=Flask(__name__)
+@app.route("/")
+def home():
+    return render_template("index.html")
+  
+@app.route("/operacoes")
+def titulo_soma():
+    return f'<h1> Calculadora </h1> '
+
+@app.route("/soma/int:v1=5/int:v2=6")
+def soma():
+    return f"O resultado é:{soma2}"
+@app.route("/subtração/int:v1=5/int:v2=6")
+def subtracao():
+    return f"O resultado é:{subtração2}"
+
+@app.route("/divisão/int:v1=5/int:v2=6")
+def divisão():
+    divisão2=v1/v2
+    return f"O resultado é:{divisão2}"
+
+
+@app.route("/multiplicação/int:v1=5/int:v2=6")
+def multiplicação():
+    return f"O resultado é:{multiplicação2}"
+if __name__=="__main__":
+    app.run(debug=True)
